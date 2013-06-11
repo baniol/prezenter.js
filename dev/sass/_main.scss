@@ -1,0 +1,105 @@
+body{
+	-webkit-backface-visibility: hidden;
+}
+
+$prez-color: #eee;
+$prez-frame-color: #ccc;
+
+.prez-cursor{
+	position: absolute;
+	font-size:36px;
+	color:$prez-color;
+	visibility:hidden;
+	@include text-shadow(0px,0px,30px,#000);
+	width:38px;
+	height:38px;
+	// border:1px solid red;
+	line-height:42px;
+}
+
+.prez-frame{
+	position:absolute;
+	border-radius: 6px;
+	@include box-shadow(0,0,30px,#000);
+}
+
+.prez-tooltip{
+	position:absolute;
+	width:240px;
+	border-radius: 6px;
+	padding:10px;
+	@include gradient(#ffffff, #cecccc);
+	@include box-shadow(0,0,20px,#000);
+	text-align:center;
+
+	&.intro,&.outro{
+		@include box-shadow(0,0,200px,#000);
+	}
+
+	.prez-end-close-btn{
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	.prez-start-btn{
+		font-size: 30px;
+		line-height: 14px;
+		padding: 7px 8px 6px 13px;
+	}
+
+	.prez-popup-text{
+		width: 100%;
+		text-align: left;
+		margin-bottom: 10px;
+	}
+}
+
+.prez-btn{
+	@include button(#fff,#636363);
+}
+
+.prez-ctrl-wrapper{
+	@include rounded(4px);
+	padding:10px 10px 20px 10px;
+	position: fixed;
+	top:20px;
+	right:150px;
+	@include gradient(#ffffff, #cecccc);
+	@include box-shadow(0,0,20px,#000);
+
+	.prez-ctrl-close{
+		margin-left:10px;
+	}
+
+	.prez-show{
+		position: absolute;
+		bottom:0;
+		width:100%;
+		text-align:center;
+		height:12px;
+		margin-left:-10px;
+		cursor:pointer;
+		padding-bottom: 7px;
+		font-size: 20px;
+		font-weight:bold;
+		line-height:18px;
+	}
+
+	.prez-hide{
+		position: absolute;
+		bottom:0;
+		width:100%;
+	}
+
+}
+
+.btn-left{
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius:0  !important;
+}
+.btn-right{
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius:0  !important;
+  border-left:none !important;
+}
