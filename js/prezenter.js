@@ -10,7 +10,7 @@
       animation = (_ref = options.animation) != null ? _ref : 'pulse';
       this.loop = (_ref1 = options.loop) != null ? _ref1 : false;
       this.outroText = (_ref2 = options.outroText) != null ? _ref2 : false;
-      this.auto = (_ref3 = options.auto) != null ? _ref3 : false;
+      this.autoStart = (_ref3 = options.autoStart) != null ? _ref3 : false;
       this.controlsOffset = (_ref4 = options.controlsOffset) != null ? _ref4 : 0;
       this.introText = (_ref5 = options.introText) != null ? _ref5 : null;
       this.moveSpeed = (_ref6 = options.moveSpeed) != null ? _ref6 : 800;
@@ -41,7 +41,7 @@
         return;
       }
       this.appendControls();
-      if (this.auto) {
+      if (this.autoStart) {
         this.showCtrl.click();
       }
     }
