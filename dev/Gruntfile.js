@@ -5,7 +5,6 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          // 'css/prezenter.css': 'sass/prezenter.scss'
           '../css/prezenter.css': 'sass/*.scss'
         }
       },
@@ -44,7 +43,7 @@ module.exports = function(grunt) {
       server: {
         options: {
           port: 8000,
-          base: '../'
+          base: '../example/'
           // keepalive:true
         }
       }

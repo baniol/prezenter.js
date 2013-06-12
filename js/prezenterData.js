@@ -2,7 +2,7 @@ window.prez_data = [
 
 	{
 		selector: 'header h1',
-		text: 'Lets start with a name of the lib',
+		text: 'Lorem ipsum Nostrud non non aliqua consequat Excepteur consectetur sit tempor amet incididunt dolore cupidatat.',
 		position: 'left'
 	},
 

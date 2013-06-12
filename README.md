@@ -1,9 +1,9 @@
 ## prezenter.js
-Live website presentation / introducton tool. Easy step-by-step guide creation.
+Live step-by-step website presentation / introducton tool.
 
 [Demo](http://baniol.github.io/prezenter.js)
 
-[screenshot]
+<img src="http://baniol.github.io/prezenter.js/example/images/prezenter.png" />
 
 ## Installation
 
@@ -32,16 +32,16 @@ $(document).ready(function() {
 
 ### Optional settings
 
-* `autoStart` Set to `true` if you want the presentation start right after the page loads. Default `false`.
-* `animation` Define the animation style on the highlighted element. Available: `pull`, `flash`, `shake`, `swing`, `tada`. Default `pulse`.
-* `loop` If set to true, goes to the begining after the last step. Default `false`.
-* `controlsOffset` Shifts the controls position left or right in pixels.
-* `moveSpeed` Speed of the arrow animation in miliseconds. Default `800`.
+* `autoStart` set to `true` if you want the presentation start right after the page loads; default `false`,
+* `animation` define the animation style on the highlighted element. Available: `pull`, `flash`, `shake`, `swing`, `tada`, default `pulse`,
+* `loop` if set to true, goes to the begining after the last step; default `false`,
+* `controlsOffset` shifts the controls position left or right in pixels,
+* `moveSpeed` speed of the arrow animation in miliseconds; default `800`.
 
 ### Optional events
-* `onStart` Executed on the presentation start.
-* `onEachStep` Executed on each step end.
-* `onEnd` Executed on the presentation end.
+* `onStart` executed on the presentation start,
+* `onEachStep` executed on each step end. Returns a step number,
+* `onEnd` executed on the presentation end.
 
 ### Example init script with all optional settings
 
@@ -70,6 +70,21 @@ $(document).ready(function() {
 
 ## The data file
 
+`prezenterData.js` file contains an object (prez_data bound to the window object) with definitions of each step of the presentation
+
+### obligatory element properties
+
+* `selector` : jquery selector pointing to a dom element within the page,
+* `text` : text shown in the prezentator tooltip; may contain html tags
+
+### optional element properties
+
+* `position` : position of the tooltip (left,right,top,bottom); default (if not explicitly specified) `left`,
+* `fn` : function executed when the step animation ends.
+
+## TODO
+* optional offset & custom dimensions of the tooltip for each step
+* tests, tests, tests ...
 
 ## Changelog
 
