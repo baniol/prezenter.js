@@ -1,5 +1,5 @@
 ## prezenter.js
-Live website presentation / introducton tool. Easy step-by-step guide creation.
+Live step-by-step website presentation / introducton tool.
 
 [Demo](http://baniol.github.io/prezenter.js)
 
@@ -40,7 +40,7 @@ $(document).ready(function() {
 
 ### Optional events
 * `onStart` Executed on the presentation start.
-* `onEachStep` Executed on each step end.
+* `onEachStep` Executed on each step end. Returns a step number.
 * `onEnd` Executed on the presentation end.
 
 ### Example init script with all optional settings
@@ -70,6 +70,21 @@ $(document).ready(function() {
 
 ## The data file
 
+`prezenterData.js` file contains an object (prez_data bound to the window object) with definitions of each step of the presentation
+
+### obligatory element properties
+
+* `selector` : jquery selector pointing to a dom element within the page,
+* `text` : text shown in the prezentator tooltip; may contain html tags
+
+### optional element properties
+
+* `position` : position of the tooltip (left,right,top,bottom); default (if not explicitly specified) `left`,
+* `fn` : function executed when the step animation ends.
+
+## TODO
+* optional offset & custom dimensions of the tooltip for each step
+* tests, tests, tests ...
 
 ## Changelog
 
