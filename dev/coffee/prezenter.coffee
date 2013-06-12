@@ -4,7 +4,7 @@ class Prezenter
 		animation = options.animation ? 'pulse'
 		@loop = options.loop ? false
 		@outroText = options.outroText ? false
-		@auto = options.auto ? false
+		@autoStart = options.autoStart ? false
 		@controlsOffset = options.controlsOffset ? 0
 		@introText = options.introText ? null
 		@moveSpeed = options.moveSpeed ? 800
@@ -40,7 +40,7 @@ class Prezenter
 
 		# init Prezenter
 		@appendControls()
-		if @auto
+		if @autoStart
 			@showCtrl.click()
 
 	log: (msg) ->

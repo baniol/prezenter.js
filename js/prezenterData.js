@@ -11,7 +11,7 @@ window.prez_data = [
 		text: 'Now move on to the download zip link',
 		position: 'left',
 		fn: function(){
-			console.log('dupa');
+			console.log('custom event on step 2');
 		}
 	},
 
