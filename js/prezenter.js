@@ -297,7 +297,7 @@
           _this.onEachStep(_this.currentStep + 1);
         }
         if (typeof _this.currentElement.fn === 'function') {
-          return _this.currentElement.fn();
+          return _this.currentElement.fn(_this.tip, _this.frame, _this.cursor);
         }
       }), this.moveSpeed);
     };

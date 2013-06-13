@@ -2,67 +2,44 @@ window.prez_data = [
 
 	{
 		selector: 'header h1',
-		text: 'Lorem ipsum Nostrud non non aliqua consequat Excepteur consectetur sit tempor amet incididunt dolore cupidatat.',
+		text: 'Starting with the page header',
 		position: 'left'
 	},
 
 	{
 		selector: '#download-zip',
-		text: 'Now move on to the download zip link',
-		position: 'left',
-		fn: function(){
-			console.log('custom event on step 2');
-		}
-	},
-
-	{
-		selector: '#download-tar-gz',
-		text: 'Then to download .tar.gz ....',
+		text: 'Then moving to the next element with the tooltip placed below the element.',
 		position: 'bottom'
 	},
 
 	{
 		selector: '#view-on-github',
-		text: 'You can also peek to the code',
-		position: 'right'
-	},
-
-	{
-		selector: '#pre-1',
-		text: 'Lorem ipsum Aute eiusmod Excepteur dolore anim proident do quis enim elit sed in adipisicing eu ut nulla.',
-		position: 'top',
-		scroll: 180
+		text: 'Rotating the cursor to demonstrage the possibility of a custom action on a specific step.',
+		position: 'left',
+		fn: function(tip, frame, cursor) {
+			cursor.transition({
+				rotate: '450deg'
+			});
+		}
 	},
 
 	{
 		selector: '.link-2',
-		text: 'Move on to the next header....',
-		position: 'left'
+		text: 'Scrolling to the next element and shaking the tooltip.',
+		position: 'right',
+		scroll:200,
+		fn: function(tip, frame, cursor) {
+			tip.addClass('animated shake');
+			setTimeout(function(){
+				tip.removeClass('animated shake');
+			},800);
+		}
 	},
 
 	{
-		selector: '.inline-code',
-		text: 'Some inline stuff ...',
-		position: 'top',
-		scroll: 120
-	},
-
-	{
-		selector: '.user-mention',
-		text: 'Lorem ipsum Laboris aliqua tempor ad eiusmod officia tempor ex irure et qui voluptate laboris eiusmod nulla magna ex est in.',
-		position: 'left'
-	},
-
-	{
-		selector: 'footer.footer',
-		text: 'To end with the footer.',
+		selector: 'footer',
+		text: 'Scrolling all the way down to the footer',
 		position: 'top'
-	},
-
-	{
-		selector: '.footer-inner',
-		text: 'Footer more specitic',
-		position: 'right'
 	}
 
 ];
