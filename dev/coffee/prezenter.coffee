@@ -33,6 +33,8 @@ class Prezenter
 		@cursorSpacing = 5
 		@currsorDims = {}
 
+		@VERSION = '0.0.2'
+
 		# make array of objects from the prezenterData.js file
 		# check if all elements exist
 		if !$.isArray @makeGrid()
@@ -274,7 +276,7 @@ class Prezenter
 				@onEachStep(@currentStep+1)
 			# custom event on specific step
 			if typeof @currentElement.fn == 'function'
-				@currentElement.fn()
+				@currentElement.fn @tip,@frame,@cursor
 			),@moveSpeed
 
 	# add highlight frame

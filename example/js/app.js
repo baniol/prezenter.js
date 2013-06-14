@@ -5,8 +5,8 @@ $(document).ready(function() {
 		loop: false,
 		controlsOffset: 0,
 		moveSpeed: 800,
-		introText: "This is a presentation of our site.<br>You can move backwards and forwards using arrow keys.",
-		outroText: 'This is the end of the presentation.<br>You can see it again by clicking the question mark at the top of the page.',
+		introText: "Let <u>prezenter.js</u> present himself.<br>You can move forward and backwards using left and right arrow keys.",
+		outroText: 'This is the end of the presentation.<br>You can watch it again by clicking the tab with a question mark at the top of the page.',
 		onStart: function() {
 			console.log('start');
 		},

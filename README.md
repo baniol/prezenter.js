@@ -7,13 +7,12 @@ Live step-by-step website presentation / introducton tool.
 
 ## Installation
 
-Prezenter.js is jquery.js and jquery.tranzit.js dependent.
-
-These are files that must be included in your page for prezenter.js to work properly.
+Prezenter.js is jquery.js and jquery.tranzit.js dependent so make sure these libraries are included in your page.
 
 ```
 ...
  <link href="css/prezenter.css" rel="stylesheet" />
+ <script src="js/jquery.js" type="text/javascript"></script>
  <script src="js/jquery.tranzit.js" type="text/javascript"></script>
  <script src="js/prezenterData.js" type="text/javascript"></script>
  <script src="js/prezenter.min.js" type="text/javascript"></script>
@@ -32,18 +31,18 @@ $(document).ready(function() {
 
 ### Optional settings
 
-* `autoStart` set to `true` if you want the presentation start right after the page loads; default `false`,
-* `animation` define the animation style on the highlighted element. Available: `pull`, `flash`, `shake`, `swing`, `tada`, default `pulse`,
-* `loop` if set to true, goes to the begining after the last step; default `false`,
-* `controlsOffset` shifts the controls position left or right in pixels,
-* `moveSpeed` speed of the arrow animation in miliseconds; default `800`.
+* `autoStart` set to `true` if you want the presentation to start right after the page loads; default `false`,
+* `animation` defines the animation type on a highlighted element: available: `pulse`, `flash`, `shake`, `swing`, `tada`; default `pulse`,
+* `loop` if set to true, goes back to the begining after the last step; default `false`,
+* `controlsOffset` shifts the controls position to the left or right; in pixels,
+* `moveSpeed` speed of the arrow animation in milliseconds; default `800`.
 
 ### Optional events
-* `onStart` executed on the presentation start,
-* `onEachStep` executed on each step end. Returns a step number,
-* `onEnd` executed on the presentation end.
+* `onStart` executed when presentation starts,
+* `onEachStep` executed when a step ends; returns a current step number,
+* `onEnd` executed when the whole presentation ends.
 
-### Example init script with all optional settings
+### Example init script with all optional settings included
 
 ```javascript
 $(document).ready(function() {
@@ -53,8 +52,8 @@ $(document).ready(function() {
 		loop: false,
 		controlsOffset: 0,
 		moveSpeed: 800,
-		introText: "This is a presentation of our site.<br>You can move backwards and forwards using arrow keys.",
-		outroText: 'This is the end of the presentation.<br>You can see it again by clicking the question mark at the top of the page.',
+		introText: "This is a live step-by-step presentation of our website.<br>You can move backwards and forwards using left and right arrow keys.",
+		outroText: 'This is the end of the presentation.<br>You can watch it again by clicking the tab with a question mark at the top of the page.',
 		onStart: function() {
 			console.log('start');
 		},
@@ -68,26 +67,36 @@ $(document).ready(function() {
 });
 ```
 
-## The data file
+## The data file `prezenterData.js`
 
-`prezenterData.js` file contains an object (prez_data bound to the window object) with definitions of each step of the presentation
+The file contains definitions for each step of the presentation
 
-### obligatory element properties
+### obligatory properties
 
 * `selector` : jquery selector pointing to a dom element within the page,
-* `text` : text shown in the prezentator tooltip; may contain html tags
+* `text` : message shown in the prezentator tooltip; may contain html tags
 
-### optional element properties
+### optional properties
 
-* `position` : position of the tooltip (left,right,top,bottom); default (if not explicitly specified) `left`,
-* `fn` : function executed when the step animation ends.
+* `position` position of the tooltip (left,right,top,bottom); default (if not explicitly specified) `left`,
+# `scroll` additionnal top scroll,
+* `fn` function executed when a step animation ends, returns the tooltip, element frame and arrow cursor as dom objects,
+
+## Development
+
+The main script is written in coffeesctipt. You can find it in the `dev` directory, together with scss files. 
+
+For tooltip animation I used css snippets from the animate.css library. If you wish to include more fancy animations check out the library source code : [Animate.css](https://github.com/daneden/animate.css/tree/master/source)
 
 ## TODO
 * optional offset & custom dimensions of the tooltip for each step
 * tests, tests, tests ...
 
-## Changelog
+### Changelog
 
-### 0.0.1 - 11th June 2013
+#### 0.0.2
+* custom callback on a specific step returns tip, frame and cursor dom objects
 
-- Initial commit
+#### 0.0.1 - 11th June 2013
+
+* Initial commit
