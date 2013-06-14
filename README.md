@@ -3,11 +3,9 @@ Live step-by-step website presentation / introducton tool.
 
 [Demo](http://baniol.github.io/prezenter.js)
 
-<img src="http://baniol.github.io/prezenter.js/example/images/prezenter.png" />
-
 ## Installation
 
-Prezenter.js is jquery.js and jquery.tranzit.js dependent so make sure these libraries are included in your page.
+Prezenter.js is jquery.js and [jquery.tranzit.js](http://ricostacruz.com/jquery.transit/) dependent so make sure these libraries are included in your page.
 
 ```
 ...
@@ -31,7 +29,7 @@ $(document).ready(function() {
 
 ### Optional settings
 
-* `autoStart` set to `true` if you want the presentation to start right after the page loads; default `false`,
+* `autoStart` if `always` the presentation will auto open each time after page reload, if `once` it will auto open only after first page load; default `false`,
 * `animation` defines the animation type on a highlighted element: available: `pulse`, `flash`, `shake`, `swing`, `tada`; default `pulse`,
 * `loop` if set to true, goes back to the begining after the last step; default `false`,
 * `controlsOffset` shifts the controls position to the left or right; in pixels,
@@ -79,7 +77,7 @@ The file contains definitions for each step of the presentation
 ### optional properties
 
 * `position` position of the tooltip (left,right,top,bottom); default (if not explicitly specified) `left`,
-# `scroll` additionnal top scroll,
+* `scroll` additionnal top scroll,
 * `fn` function executed when a step animation ends, returns the tooltip, element frame and arrow cursor as dom objects,
 
 ## Development
@@ -94,7 +92,10 @@ For tooltip animation I used css snippets from the animate.css library. If you w
 
 ### Changelog
 
-#### 0.0.2
+#### 0.0.3 - 14th June 2013
+* autoStart option with `always` and `once`
+
+#### 0.0.2 - 14th June 2013
 * custom callback on a specific step returns tip, frame and cursor dom objects
 
 #### 0.0.1 - 11th June 2013

@@ -42,7 +42,7 @@ class Prezenter
 
 		# init Prezenter
 		@appendControls()
-		if @autoStart
+		if @autoStart is 'always' or (@autoStart is 'once' and !window.localStorage.prezenter_mark_done?)
 			@showCtrl.click()
 
 	log: (msg) ->
@@ -374,6 +374,8 @@ class Prezenter
 		# @todo do not remove globally, only for prezentator
 		@unbindKeys()
 
+		@markDone()
+
 	showPopup: (text) ->
 		# find viewport center
 		vw = $(document).width()
@@ -405,7 +407,7 @@ class Prezenter
 				# hide controls
 				@ctrlWrapper.transition({y:-@ctrlWrapperHeight},300,'ease')
 				@showCtrl.show()
-				
+
 		tw = @tip.width()
 		th = @tip.height()
 		tTop = 200
@@ -454,6 +456,9 @@ class Prezenter
 
 		if @currentElement.cursorPosition is "right" and @grid[@currentStep + next].cursorPosition is "left"
 			@cursor.css rotate: '-=180'
+
+	markDone: ->
+		window.localStorage.setItem 'prezenter_mark_done',true
 
 
 root = exports ? window  

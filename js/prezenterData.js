@@ -19,6 +19,8 @@ window.prez_data = [
 		fn: function(tip, frame, cursor) {
 			cursor.transition({
 				rotate: '450deg'
+			}, function() {
+				cursor.css({rotate: '-270deg'});
 			});
 		}
 	},
@@ -27,12 +29,12 @@ window.prez_data = [
 		selector: '.link-2',
 		text: 'Scrolling to the next element and shaking the tooltip.',
 		position: 'right',
-		scroll:200,
+		scroll: 200,
 		fn: function(tip, frame, cursor) {
 			tip.addClass('animated shake');
-			setTimeout(function(){
+			setTimeout(function() {
 				tip.removeClass('animated shake');
-			},800);
+			}, 800);
 		}
 	},
 

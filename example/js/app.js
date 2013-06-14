@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	(new Prezenter({
-		autoStart: true,
+		autoStart: 'always',
 		animation: 'flash',
 		loop: false,
 		controlsOffset: 0,

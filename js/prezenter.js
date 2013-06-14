@@ -37,11 +37,12 @@
       this.framePadding = 10;
       this.cursorSpacing = 5;
       this.currsorDims = {};
+      this.VERSION = '0.0.2';
       if (!$.isArray(this.makeGrid())) {
         return;
       }
       this.appendControls();
-      if (this.autoStart) {
+      if (this.autoStart === 'always' || (this.autoStart === 'once' && (window.localStorage.prezenter_mark_done == null))) {
         this.showCtrl.click();
       }
     }
@@ -396,7 +397,8 @@
           y: -this.ctrlWrapperHeight
         }, 300, 'ease');
       }
-      return this.unbindKeys();
+      this.unbindKeys();
+      return this.markDone();
     };
 
     Prezenter.prototype.showPopup = function(text) {
@@ -507,6 +509,10 @@
           rotate: '-=180'
         });
       }
+    };
+
+    Prezenter.prototype.markDone = function() {
+      return window.localStorage.setItem('prezenter_mark_done', true);
     };
 
     return Prezenter;
