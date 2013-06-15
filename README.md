@@ -33,7 +33,8 @@ $(document).ready(function() {
 * `animation` defines the animation type on a highlighted element: available: `pulse`, `flash`, `shake`, `swing`, `tada`; default `pulse`,
 * `loop` if set to true, goes back to the begining after the last step; default `false`,
 * `controlsOffset` shifts the controls position to the left or right; in pixels,
-* `moveSpeed` speed of the arrow animation in milliseconds; default `800`.
+* `moveSpeed` speed of the arrow animation in milliseconds; default `800`,
+* `showText` text appearing on a hidden controls box, default `presentation`.
 
 ### Optional events
 * `onStart` executed when presentation starts,
@@ -78,7 +79,10 @@ The file contains definitions for each step of the presentation
 
 * `position` position of the tooltip (left,right,top,bottom); default (if not explicitly specified) `left`,
 * `scroll` additionnal top scroll,
-* `fn` function executed when a step animation ends, returns the tooltip, element frame and arrow cursor as dom objects,
+* `stepIn` calback executed when a step animation ends, returns the tooltip, element frame and arrow cursor as dom objects,
+* `stepOut` callback executed while moving to a following step, returns the tooltip, element frame and arrow cursor as dom objects.
+
+[An example of prezenterData.js file](https://github.com/baniol/prezenter.js/blob/master/js/prezenterData.js)
 
 ## Development
 
@@ -86,9 +90,10 @@ The main script is written in coffeesctipt. You can find it in the `dev` directo
 
 For tooltip animation I used css snippets from the animate.css library. If you wish to include more fancy animations check out the library source code : [Animate.css](https://github.com/daneden/animate.css/tree/master/source)
 
-## TODO
-* optional offset & custom dimensions of the tooltip for each step
-* autoplay
+### Tested on
+* chrome 27
+* firefox 19.0.2
+* Opera 12.15
 
 ### Changelog
 

@@ -3,13 +3,7 @@ window.prez_data = [
 	{
 		selector: 'header h1',
 		text: 'Starting with the page header',
-		position: 'left',
-		stepIn: function(tip, frame, cursor) {
-			cursor.addClass('red-cursor');
-		},
-		stepOut: function(tip, frame, cursor) {
-			cursor.removeClass('red-cursor');
-		}
+		position: 'left'
 	},
 
 	{
@@ -17,7 +11,7 @@ window.prez_data = [
 		text: 'Then moving to the next element with the tooltip placed below the element.<br/>The red arrow on the right points to the next element.',
 		position: 'bottom',
 		stepIn: function(tip, frame, cursor) {
-			var c = $('<div class="cursor-added" style="position:absolute;right:579px;top:161px;color:red;font-size:30px;-webkit-transform:rotate(45deg);" >⬆</div>');
+			var c = $('<div class="cursor-added" style="position:absolute;right:579px;top:161px;color:red;font-size:30px;transform:rotate(45deg);" >⬆</div>');
 			$('body').append(c);
 			$('#view-on-github').addClass('red-border');
 
@@ -27,23 +21,18 @@ window.prez_data = [
 			$('#view-on-github').removeClass('red-border');
 
 		}
-		// stepIn: function(tip, frame, cursor) {
-		// 	cursor.addClass('green-cursor');
-		// },
-		// stepOut: function(tip, frame, cursor) {
-		// 	cursor.removeClass('green-cursor');
-		// }
 	},
 
 	{
 		selector: '#view-on-github',
-		text: 'Rotating the cursor to demonstrage the possibility of a custom action on a specific step.',
-		position: 'left'
-		// stepIn: function(tip, frame, cursor) {
-		// 	cursor.transition({
-		// 		rotate: '450deg'
-		// 	});
-		// }
+		text: 'Changing the cursor color to demonstrage the possibility of a custom action on a specific step.',
+		position: 'left',
+		stepIn: function(tip, frame, cursor) {
+			cursor.addClass('red-cursor');
+		},
+		stepOut: function(tip, frame, cursor) {
+			cursor.removeClass('red-cursor');
+		}
 	},
 
 	{

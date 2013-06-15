@@ -13,7 +13,7 @@ class Prezenter
 		@onStart = options.onStart ? null
 		@onLastStep = options.onLastStep ? null
 		@onEnd = options.onEnd ? null
-		@showText = options.showText ? 'help'
+		@showText = options.showText ? 'presentation'
 
 		@data = prez_data
 		@debug = true
@@ -169,7 +169,7 @@ class Prezenter
 	# calculates the cursor position & places is at the first step
 	# @todo merge switch with @calcuateDifference
 	placeCursor: ->
-		# @todo chante - currentElement is always the first
+		# @todo change - currentElement is always the first
 		# @currentElement = @grid[@currentStep]
 		@currentElement = @grid[0]
 
@@ -177,10 +177,7 @@ class Prezenter
 
 		# append hidden cursor to take it's dimensions - not used at the moment (static cursor dims)
 		@body.append @cursor
-		# @todo dynamically set the cursor dimensions
 		@currsorDims = 
-			# width:30
-			# height:30
 			width:@cursor.width()
 			height:@cursor.height()
 
@@ -327,7 +324,6 @@ class Prezenter
 			else
 				@tip.css
 					left: @currentElement.offset.left - @framePadding*3 - @tip.width() - @currsorDims.width - @cursorSpacing*2
-					# - @framePadding*4 - @currsorDims.width - @tip.width() - @cursorSpacing
 					top: @currentElement.offset.top - @framePadding
 
 	# if back == true -> calculate move to the previous position
@@ -353,7 +349,7 @@ class Prezenter
 			x: second.offset.left - @cursorInitialPosition.left + correctionX
 			y: second.offset.top - @cursorInitialPosition.top + correctionY
 
-	## close prezentation
+	# close prezentation
 	presentationEnd: (noConfirm = false) ->
 		#remove listeners
 		@unbindControls()

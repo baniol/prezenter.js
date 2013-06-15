@@ -18,7 +18,7 @@
       this.onStart = (_ref8 = options.onStart) != null ? _ref8 : null;
       this.onLastStep = (_ref9 = options.onLastStep) != null ? _ref9 : null;
       this.onEnd = (_ref10 = options.onEnd) != null ? _ref10 : null;
-      this.showText = (_ref11 = options.showText) != null ? _ref11 : 'help';
+      this.showText = (_ref11 = options.showText) != null ? _ref11 : 'presentation';
       this.data = prez_data;
       this.debug = true;
       this.currentStep = 0;
