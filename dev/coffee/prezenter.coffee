@@ -11,7 +11,9 @@ class Prezenter
 		# custom events
 		@onEachStep = options.onEachStep ? null
 		@onStart = options.onStart ? null
+		@onLastStep = options.onLastStep ? null
 		@onEnd = options.onEnd ? null
+		@showText = options.showText ? 'help'
 
 		@data = prez_data
 		@debug = true
@@ -55,6 +57,8 @@ class Prezenter
 			@showTip()
 			@bindKeys()
 			# this is the first step - custom event onEachStep
+			if typeof @currentElement.stepIn == 'function'
+				@currentElement.stepIn @tip,@frame,@cursor
 			if typeof @onEachStep == 'function'
 				@onEachStep(@currentStep+1)
 			return
@@ -90,7 +94,8 @@ class Prezenter
 				height: elDims.height
 				scroll: item.scroll
 				cursorPosition: if item.position? then item.position else "left"
-				fn: item.fn
+				stepIn: item.stepIn
+				stepOut: item.stepOut
 			@grid.push el
 		@grid
 
@@ -111,7 +116,7 @@ class Prezenter
 		@ctrlPrevButton = $('<div class="prez-btn btn-left prez-ctrl-prev">«</div>')
 		@ctrlNextButton = $('<div class="prez-btn btn-right prez-ctrl-next">»</div>')
 		@ctrlCloseButton = $('<div class="prez-btn prez-ctrl-close">✖</div>')
-		@showCtrl = $('<div class="prez-show">?</div>')
+		@showCtrl = $('<div class="prez-show">'+@showText+'</div>')
 		@ctrlWrapper.append @ctrlPrevButton
 		@ctrlWrapper.append @ctrlNextButton
 		@ctrlWrapper.append @ctrlCloseButton
@@ -218,6 +223,10 @@ class Prezenter
 		, 400);
 
 	nextStep: (back) ->
+		# callback on step out of the previous step
+		if typeof @currentElement.stepOut == 'function'
+			@currentElement.stepOut @tip,@frame,@cursor
+
 		# first step and back
 		if @currentStep is 0 and back? then return;
 
@@ -275,8 +284,8 @@ class Prezenter
 			if typeof @onEachStep == 'function'
 				@onEachStep(@currentStep+1)
 			# custom event on specific step
-			if typeof @currentElement.fn == 'function'
-				@currentElement.fn @tip,@frame,@cursor
+			if typeof @currentElement.stepIn == 'function'
+				@currentElement.stepIn @tip,@frame,@cursor
 			),@moveSpeed
 
 	# add highlight frame
@@ -351,8 +360,8 @@ class Prezenter
 		@startButton.off 'click'
 
 		# custom event on prezentation end
-		if typeof @onEnd == 'function'
-			@onEnd()
+		if typeof @onLastStep == 'function'
+			@onLastStep()
 
 		# remove prezentator elements
 		@frame.remove()
@@ -407,6 +416,8 @@ class Prezenter
 				# hide controls
 				@ctrlWrapper.transition({y:-@ctrlWrapperHeight},300,'ease')
 				@showCtrl.show()
+				if typeof @onEnd == 'function'
+					@onEnd()
 
 		tw = @tip.width()
 		th = @tip.height()

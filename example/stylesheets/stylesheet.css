@@ -377,3 +377,13 @@ footer a:hover {
   width:138px;
   height:55px;
 }
+.green-cursor{
+  color:green !important;
+}
+.red-cursor{
+  color:red !important;
+}
+.red-border{
+  border:2px solid red !important;
+  width:175px !important;
+}

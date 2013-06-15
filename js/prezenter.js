@@ -3,7 +3,7 @@
 
   Prezenter = (function() {
     function Prezenter(options) {
-      var animation, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+      var animation, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
       if (options == null) {
         options = {};
       }
@@ -16,7 +16,9 @@
       this.moveSpeed = (_ref6 = options.moveSpeed) != null ? _ref6 : 800;
       this.onEachStep = (_ref7 = options.onEachStep) != null ? _ref7 : null;
       this.onStart = (_ref8 = options.onStart) != null ? _ref8 : null;
-      this.onEnd = (_ref9 = options.onEnd) != null ? _ref9 : null;
+      this.onLastStep = (_ref9 = options.onLastStep) != null ? _ref9 : null;
+      this.onEnd = (_ref10 = options.onEnd) != null ? _ref10 : null;
+      this.showText = (_ref11 = options.showText) != null ? _ref11 : 'help';
       this.data = prez_data;
       this.debug = true;
       this.currentStep = 0;
@@ -60,6 +62,9 @@
         _this.showFrame();
         _this.showTip();
         _this.bindKeys();
+        if (typeof _this.currentElement.stepIn === 'function') {
+          _this.currentElement.stepIn(_this.tip, _this.frame, _this.cursor);
+        }
         if (typeof _this.onEachStep === 'function') {
           _this.onEachStep(_this.currentStep + 1);
         }
@@ -98,7 +103,8 @@
           height: elDims.height,
           scroll: item.scroll,
           cursorPosition: item.position != null ? item.position : "left",
-          fn: item.fn
+          stepIn: item.stepIn,
+          stepOut: item.stepOut
         };
         this.grid.push(el);
       }
@@ -125,7 +131,7 @@
       this.ctrlPrevButton = $('<div class="prez-btn btn-left prez-ctrl-prev">«</div>');
       this.ctrlNextButton = $('<div class="prez-btn btn-right prez-ctrl-next">»</div>');
       this.ctrlCloseButton = $('<div class="prez-btn prez-ctrl-close">✖</div>');
-      this.showCtrl = $('<div class="prez-show">?</div>');
+      this.showCtrl = $('<div class="prez-show">' + this.showText + '</div>');
       this.ctrlWrapper.append(this.ctrlPrevButton);
       this.ctrlWrapper.append(this.ctrlNextButton);
       this.ctrlWrapper.append(this.ctrlCloseButton);
@@ -248,6 +254,9 @@
     Prezenter.prototype.nextStep = function(back) {
       var addScroll, diff, next, topScroll,
         _this = this;
+      if (typeof this.currentElement.stepOut === 'function') {
+        this.currentElement.stepOut(this.tip, this.frame, this.cursor);
+      }
       if (this.currentStep === 0 && (back != null)) {
         return;
       }
@@ -297,8 +306,8 @@
         if (typeof _this.onEachStep === 'function') {
           _this.onEachStep(_this.currentStep + 1);
         }
-        if (typeof _this.currentElement.fn === 'function') {
-          return _this.currentElement.fn(_this.tip, _this.frame, _this.cursor);
+        if (typeof _this.currentElement.stepIn === 'function') {
+          return _this.currentElement.stepIn(_this.tip, _this.frame, _this.cursor);
         }
       }), this.moveSpeed);
     };
@@ -380,8 +389,8 @@
       }
       this.unbindControls();
       this.startButton.off('click');
-      if (typeof this.onEnd === 'function') {
-        this.onEnd();
+      if (typeof this.onLastStep === 'function') {
+        this.onLastStep();
       }
       this.frame.remove();
       this.cursor.remove();
@@ -432,7 +441,10 @@
           _this.ctrlWrapper.transition({
             y: -_this.ctrlWrapperHeight
           }, 300, 'ease');
-          return _this.showCtrl.show();
+          _this.showCtrl.show();
+          if (typeof _this.onEnd === 'function') {
+            return _this.onEnd();
+          }
         });
       }
       tw = this.tip.width();

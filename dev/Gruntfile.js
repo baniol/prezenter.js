@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 		sass: {
 			dist: {
 				files: {
-					'css/prezenter.css': 'sass/*.scss'
+					'../css/prezenter.css': 'sass/*.scss'
 				}
 			},
 			options: {
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 			dist: {
 				options: {
 					sassDir: 'sass',
-					cssDir: 'css',
+					cssDir: '../css',
 					environment: 'production',
 					outputStyle: 'expanded'
 				}
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 			dev: {
 				options: {
 					sassDir: 'sass',
-					cssDir: 'css'
+					cssDir: '../css'
 				}
 			}
 		},
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
 		uglify: {
 			solo: {
 				files: {
-					'js/prezenter.min.js': ['js/prezenter.js']
+					'../js/prezenter.min.js': ['../js/prezenter.js']
 				}
 			},
 			full: {

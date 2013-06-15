@@ -412,6 +412,7 @@ body {
   width: 240px;
   border-radius: 6px;
   padding: 10px;
+  z-index: 5000;
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(#cecccc));
   background: -moz-linear-gradient(top, white, #cecccc);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#cecccc');
@@ -443,6 +444,7 @@ body {
   width: 100%;
   text-align: left;
   margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .prez-btn {
@@ -486,6 +488,7 @@ body {
   position: fixed;
   top: 20px;
   right: 150px;
+  z-index: 5000;
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(#cecccc));
   background: -moz-linear-gradient(top, white, #cecccc);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#cecccc');
@@ -507,7 +510,8 @@ body {
   margin-left: -10px;
   cursor: pointer;
   padding-bottom: 7px;
-  font-size: 20px;
+  font-size: 18px;
+  text-transform: uppercase;
   font-weight: bold;
   line-height: 18px;
 }

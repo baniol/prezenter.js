@@ -28,6 +28,7 @@ $prez-frame-color: #ccc;
 	width:240px;
 	border-radius: 6px;
 	padding:10px;
+	z-index:5000;
 	@include gradient(#ffffff, #cecccc);
 	@include box-shadow(0,0,20px,#000);
 	text-align:center;
@@ -52,6 +53,7 @@ $prez-frame-color: #ccc;
 		width: 100%;
 		text-align: left;
 		margin-bottom: 10px;
+		font-size: 16px;
 	}
 }
 
@@ -65,6 +67,7 @@ $prez-frame-color: #ccc;
 	position: fixed;
 	top:20px;
 	right:150px;
+	z-index:5000;
 	@include gradient(#ffffff, #cecccc);
 	@include box-shadow(0,0,20px,#000);
 
@@ -81,9 +84,11 @@ $prez-frame-color: #ccc;
 		margin-left:-10px;
 		cursor:pointer;
 		padding-bottom: 7px;
-		font-size: 20px;
+		font-size: 18px;
+		text-transform: uppercase;
 		font-weight:bold;
 		line-height:18px;
+
 	}
 
 	.prez-hide{

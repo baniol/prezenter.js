@@ -88,9 +88,14 @@ For tooltip animation I used css snippets from the animate.css library. If you w
 
 ## TODO
 * optional offset & custom dimensions of the tooltip for each step
-* tests, tests, tests ...
+* autoplay
 
 ### Changelog
+
+#### 0.0.4
+* custom pull down text - controls box
+* stepOut callback on each step added
+* added onEnd and onLastSteps callbacks
 
 #### 0.0.3 - 14th June 2013
 * autoStart option with `always` and `once`

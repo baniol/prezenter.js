@@ -507,7 +507,8 @@ body {
   margin-left: -10px;
   cursor: pointer;
   padding-bottom: 7px;
-  font-size: 20px;
+  font-size: 18px;
+  text-transform: capitalize;
   font-weight: bold;
   line-height: 18px;
 }

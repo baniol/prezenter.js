@@ -14,7 +14,9 @@ $(document).ready(function() {
 			console.log(step);
 		},
 		onEnd: function() {
-			console.log('prezentation end');
+			var c = $('<div class="cursor-added" style="position:absolute;right:579px;top:161px;color:red;font-size:30px;-webkit-transform:rotate(45deg);" >⬆</div>');
+			$('body').append(c);
+			// $('#view-on-github').addClass('red-border');
 		}
 	}));
 });
