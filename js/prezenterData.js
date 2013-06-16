@@ -8,10 +8,10 @@ window.prez_data = [
 
 	{
 		selector: '#download-zip',
-		text: 'Then moving to the next element with the tooltip placed below the element.<br/>The red arrow on the right points to the next element.',
+		text: 'Moving to the next element with the tooltip placed below the element.<br/>Use callbacks to attach actions to other elements.',
 		position: 'bottom',
 		stepIn: function(tip, frame, cursor) {
-			var c = $('<div class="cursor-added" style="position:absolute;right:579px;top:161px;color:red;font-size:30px;transform:rotate(45deg);" >⬆</div>');
+			var c = $('<div class="cursor-added" style="position:absolute;right:579px;top:161px;color:red;font-size:30px;transform:rotate(45deg);-webkit-transform:rotate(45deg);" >⬆</div>');
 			$('body').append(c);
 			$('#view-on-github').addClass('red-border');
 
