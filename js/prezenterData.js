@@ -3,7 +3,8 @@ window.prez_data = [
 	{
 		selector: 'header h1',
 		text: 'Starting with the page header',
-		position: 'left'
+		position: 'left',
+		width:282
 	},
 
 	{

@@ -39,7 +39,7 @@
       this.framePadding = 10;
       this.cursorSpacing = 5;
       this.currsorDims = {};
-      this.VERSION = '0.0.2';
+      this.VERSION = '0.0.4';
       if (!$.isArray(this.makeGrid())) {
         return;
       }
@@ -83,7 +83,7 @@
     };
 
     Prezenter.prototype.makeGrid = function() {
-      var el, elDims, item, objDom, _i, _len, _ref, _ref1, _ref2;
+      var el, elDims, elHeight, elWidth, item, objDom, _i, _len, _ref, _ref1, _ref2;
       _ref = this.data;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         item = _ref[_i];
@@ -92,6 +92,8 @@
         if (objDom.length === 0) {
           throw "the element " + item.selector + " does not exist";
         }
+        elWidth = item.width != null ? item.width : elDims.width;
+        elHeight = item.height != null ? item.height : elDims.height;
         el = {
           selector: item.selector,
           text: item.text,
@@ -99,8 +101,8 @@
             top: (_ref1 = objDom.offset()) != null ? _ref1.top : void 0,
             left: (_ref2 = objDom.offset()) != null ? _ref2.left : void 0
           },
-          width: elDims.width,
-          height: elDims.height,
+          width: elWidth,
+          height: elHeight,
           scroll: item.scroll,
           cursorPosition: item.position != null ? item.position : "left",
           stepIn: item.stepIn,

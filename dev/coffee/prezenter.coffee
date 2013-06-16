@@ -35,7 +35,7 @@ class Prezenter
 		@cursorSpacing = 5
 		@currsorDims = {}
 
-		@VERSION = '0.0.2'
+		@VERSION = '0.0.4'
 
 		# make array of objects from the prezenterData.js file
 		# check if all elements exist
@@ -84,14 +84,18 @@ class Prezenter
 			if(objDom).length is 0
 				throw "the element #{item.selector} does not exist"
 
+			# custom dimensions, if set explicitly
+			elWidth = if item.width? then item.width else elDims.width
+			elHeight = if item.height? then item.height else elDims.height
+
 			el = 
 				selector: item.selector
 				text: item.text
 				offset:
 					top:objDom.offset()?.top
 					left:objDom.offset()?.left
-				width: elDims.width
-				height: elDims.height
+				width: elWidth
+				height: elHeight
 				scroll: item.scroll
 				cursorPosition: if item.position? then item.position else "left"
 				stepIn: item.stepIn

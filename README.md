@@ -79,6 +79,7 @@ The file contains definitions for each step of the presentation
 
 * `position` position of the tooltip (left,right,top,bottom); default (if not explicitly specified) `left`,
 * `scroll` additionnal top scroll,
+* `width` and `height` element frame custom width & height,
 * `stepIn` calback executed when a step animation ends, returns the tooltip, element frame and arrow cursor as dom objects,
 * `stepOut` callback executed while moving to a following step, returns the tooltip, element frame and arrow cursor as dom objects.
 
@@ -97,10 +98,11 @@ For tooltip animation I used css snippets from the animate.css library. If you w
 
 ### Changelog
 
-#### 0.0.4
+#### 0.0.4 - 16th June 2013
 * custom pull down text - controls box
 * stepOut callback on each step added
 * added onEnd and onLastSteps callbacks
+* added custom height & width of the element frame
 
 #### 0.0.3 - 14th June 2013
 * autoStart option with `always` and `once`
